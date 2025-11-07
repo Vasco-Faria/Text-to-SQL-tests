@@ -11,7 +11,7 @@ SELECT
 FROM 
     lineitem
 WHERE 
-    l_shipdate <= DATE '1998-12-01' - (random() * (120 - 60) + 60)
+    l_shipdate <= DATE '1998-12-01' - INTERVAL '84 days'
 GROUP BY 
     l_returnflag, 
     l_linestatus

@@ -1,0 +1,3 @@
+psql:./q13_ZS.sql:21: ERROR:  relation "customers" does not exist
+LINE 6:         customers c
+                ^

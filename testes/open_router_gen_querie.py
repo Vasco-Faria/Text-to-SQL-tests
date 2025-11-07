@@ -3,12 +3,11 @@ import requests
 from dotenv import load_dotenv
 
 # === CONFIG ===
-schema_file = "schema.txt"
 descriptions_dir = "descriptions"
 outputs_dir = "generated_sql"
 
 # Choose the free model available on OpenRouter
-model_name = "meta-llama/llama-3.3-70b-instruct:free"
+model_name = "deepseek/deepseek-r1-distill-llama-70b:free"
 
 # Put your OpenRouter API key here or as an environment variable
 load_dotenv()
@@ -18,22 +17,15 @@ os.makedirs(outputs_dir, exist_ok=True)
 
 # === System instruction ===
 instruction = """
-You are a SQL expert.
-Using the database schema and the business question provided,
-generate a valid PostgreSQL query that answers the question.
+Generate a valid PostgreSQL query that answers the question.
 Do NOT include explanations or comments.
 Return ONLY the SQL code.
 """
 
-# === Read schema ===
-with open(schema_file, "r") as f:
-    schema_text = f.read()
 
 
-def generate_sql(schema, question):
+def generate_sql(question,instruction):
     prompt = f"""
-DATABASE SCHEMA:
-{schema}
 
 QUESTION:
 {question}
@@ -74,26 +66,29 @@ QUESTION:
     return sql
 
 
-# === Process all descriptions ===
-for filename in os.listdir(descriptions_dir):
-    if filename.endswith("_description.txt"):
-        query_name = filename.replace("_description.txt", "")
-        description_path = os.path.join(descriptions_dir, filename)
+# === Process Q1 to Q5 descriptions ===
+for q_num in range(16, 21):  # Q1 até Q5
+    query_name = f"q{q_num}"
+    description_path = os.path.join(descriptions_dir, f"{query_name}_description.txt")
 
-        with open(description_path, "r") as f:
-            description_text = f.read()
+    if not os.path.exists(description_path):
+        print(f"⚠️  Description file not found for {query_name}: {description_path}")
+        continue
 
-        print(f"\n🚀 Generating SQL for: {query_name}...")
+    print(f"\n🚀 Generating SQL for: {query_name}...")
 
-        try:
-            sql_query = generate_sql(schema_text, description_text)
-        except Exception as e:
-            print(f"❌ Error generating SQL for {query_name}: {e}")
-            continue
+    with open(description_path, "r") as f:
+        description_text = f.read()
 
-        output_path = os.path.join(outputs_dir, f"{query_name}_ZS.sql")
-        with open(output_path, "w") as f:
-            f.write(sql_query)
+    try:
+        sql_query = generate_sql(description_text,instruction)
+    except Exception as e:
+        print(f"❌ Error generating SQL for {query_name}: {e}")
+        continue
 
-        print(f"✅ Saved to: {output_path}")
-        print(f"---\n{sql_query}\n---")
+    output_path = os.path.join(outputs_dir, f"{query_name}_ZS.sql")
+    with open(output_path, "w") as f:
+        f.write(sql_query)
+
+    print(f"✅ Saved to: {output_path}")
+    print(f"---\n{sql_query}\n---")

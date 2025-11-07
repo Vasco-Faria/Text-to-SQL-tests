@@ -1,0 +1,4 @@
+psql:./q12_ZS.sql:25: ERROR:  column "ship_mode" does not exist
+LINE 19:     ship_mode,
+             ^
+HINT:  Perhaps you meant to reference the column "late_shipments.l_shipmode".

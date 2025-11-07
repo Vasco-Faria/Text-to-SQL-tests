@@ -1,0 +1,4 @@
+psql:./q7_ZS.sql:27: ERROR:  column l.l_custkey does not exist
+LINE 13:     customer c ON l.l_custkey = c.c_custkey
+                           ^
+HINT:  Perhaps you meant to reference the column "c.c_custkey".

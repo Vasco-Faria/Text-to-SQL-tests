@@ -1,0 +1,4 @@
+psql:./q17_ZS.sql:9: ERROR:  column l.l_container does not exist
+LINE 5:   AND l.l_container = 'SM CAN'
+              ^
+HINT:  Perhaps you meant to reference the column "p.p_container".

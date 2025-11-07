@@ -1,0 +1,3 @@
+psql:./q15_ZS.sql:14: ERROR:  column "supp_no" does not exist
+LINE 1: SELECT supp_no, SUM(order_amt) AS total_revenue
+               ^

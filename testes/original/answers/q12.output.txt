@@ -1,6 +1,4 @@
  l_shipmode | high_line_count | low_line_count 
 ------------+-----------------+----------------
- FOB        |            6273 |           9429
- MAIL       |            6252 |           9376
-(2 rows)
+(0 rows)
 

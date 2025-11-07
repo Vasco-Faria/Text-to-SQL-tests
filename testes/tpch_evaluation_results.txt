@@ -1,0 +1,154 @@
+TPC-H Execution Accuracy Evaluation
+================================================================================
+
+Execution Accuracy (EX): 4.55%
+Correct: 1/22
+
+Breakdown:
+  Correct matches: 1
+  Mismatches: 1
+  Missing outputs: 2
+  Parse errors: 18
+
+Detailed Results:
+--------------------------------------------------------------------------------
+
+Query: q1
+Status: MISMATCH
+Match: False
+Reason: Different shapes: (6, 10) vs (6, 9)
+Original shape: (6, 10)
+Generated shape: (6, 9)
+Original columns: ['l_returnflag', 'l_linestatus', 'sum_qty', 'sum_base_price', 'sum_disc_price', 'sum_charge', 'avg_qty', 'avg_price', 'avg_disc', 'count_order']
+Generated columns: ['l_returnflag', 'l_linestatus', 'sum_extendedprice', 'sum_discounted_extendedprice', 'sum_discounted_extendedprice_plus_tax', 'avg_quantity', 'avg_extendedprice', 'avg_discount', 'count_lineitems']
+--------------------------------------------------------------------------------
+
+Query: q10
+Status: PARSE_ERROR_GEN
+Match: False
+Reason: Failed to parse generated output
+--------------------------------------------------------------------------------
+
+Query: q11
+Status: PARSE_ERROR_ORIG
+Match: False
+Reason: Failed to parse original output
+--------------------------------------------------------------------------------
+
+Query: q12
+Status: PARSE_ERROR_ORIG
+Match: False
+Reason: Failed to parse original output
+--------------------------------------------------------------------------------
+
+Query: q13
+Status: PARSE_ERROR_GEN
+Match: False
+Reason: Failed to parse generated output
+--------------------------------------------------------------------------------
+
+Query: q14
+Status: PARSE_ERROR_ORIG
+Match: False
+Reason: Failed to parse original output
+--------------------------------------------------------------------------------
+
+Query: q15
+Status: PARSE_ERROR_ORIG
+Match: False
+Reason: Failed to parse original output
+--------------------------------------------------------------------------------
+
+Query: q16
+Status: PARSE_ERROR_GEN
+Match: False
+Reason: Failed to parse generated output
+--------------------------------------------------------------------------------
+
+Query: q17
+Status: PARSE_ERROR_ORIG
+Match: False
+Reason: Failed to parse original output
+--------------------------------------------------------------------------------
+
+Query: q18
+Status: PARSE_ERROR_ORIG
+Match: False
+Reason: Failed to parse original output
+--------------------------------------------------------------------------------
+
+Query: q19
+Status: PARSE_ERROR_ORIG
+Match: False
+Reason: Failed to parse original output
+--------------------------------------------------------------------------------
+
+Query: q2
+Status: PARSE_ERROR_ORIG
+Match: False
+Reason: Failed to parse original output
+--------------------------------------------------------------------------------
+
+Query: q20
+Status: PARSE_ERROR_ORIG
+Match: False
+Reason: Failed to parse original output
+--------------------------------------------------------------------------------
+
+Query: q21
+Status: MISSING
+Match: False
+Reason: No generated output file found
+--------------------------------------------------------------------------------
+
+Query: q22
+Status: MISSING
+Match: False
+Reason: No generated output file found
+--------------------------------------------------------------------------------
+
+Query: q3
+Status: PARSE_ERROR_ORIG
+Match: False
+Reason: Failed to parse original output
+--------------------------------------------------------------------------------
+
+Query: q4
+Status: PARSE_ERROR_ORIG
+Match: False
+Reason: Failed to parse original output
+--------------------------------------------------------------------------------
+
+Query: q5
+Status: PARSE_ERROR_ORIG
+Match: False
+Reason: Failed to parse original output
+--------------------------------------------------------------------------------
+
+Query: q6
+Status: PARSE_ERROR_ORIG
+Match: False
+Reason: Failed to parse original output
+--------------------------------------------------------------------------------
+
+Query: q7
+Status: PARSE_ERROR_ORIG
+Match: False
+Reason: Failed to parse original output
+--------------------------------------------------------------------------------
+
+Query: q8
+Status: PARSE_ERROR_ORIG
+Match: False
+Reason: Failed to parse original output
+--------------------------------------------------------------------------------
+
+Query: q9
+Status: MATCH
+Match: True
+Reason: Match (content-based column mapping)
+Original shape: (1, 3)
+Generated shape: (1, 3)
+Original columns: ['nation', 'o_year', 'sum_profit']
+Generated columns: ['nation', 'year', 'profit']
+--------------------------------------------------------------------------------

@@ -1,0 +1,3 @@
+psql:./q3_ZS.sql:32: ERROR:  invalid input syntax for type integer: "1-URGENT"
+LINE 15:     AND o_shippriority IN ('1-URGENT', '2-HIGH')
+                                    ^

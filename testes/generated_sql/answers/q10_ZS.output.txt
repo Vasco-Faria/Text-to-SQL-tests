@@ -1,0 +1,4 @@
+psql:./q10_ZS.sql:36: ERROR:  column c.c_nation does not exist
+LINE 7:         c.c_nation,
+                ^
+HINT:  Perhaps you meant to reference the column "c.c_nationkey".

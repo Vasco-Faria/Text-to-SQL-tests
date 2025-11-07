@@ -1,0 +1,4 @@
+psql:./q8_ZS.sql:44: ERROR:  column l.l_nationkey does not exist
+LINE 5:      JOIN nation n ON l.l_nationkey = n.n_nationkey
+                              ^
+HINT:  Perhaps you meant to reference the column "n.n_nationkey".

@@ -1,0 +1,3 @@
+psql:./q16_ZS.sql:24: ERROR:  relation "parts_supplier" does not exist
+LINE 7:     Parts_Supplier ps ON s.s_suppkey = ps.ps_suppkey
+            ^

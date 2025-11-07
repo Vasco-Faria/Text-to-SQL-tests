@@ -1,0 +1,4 @@
+psql:./q19_ZS.sql:8: ERROR:  column l.partkey does not exist
+LINE 3: JOIN part p ON l.partkey = p.partkey
+                       ^
+HINT:  Perhaps you meant to reference the column "l.l_partkey".

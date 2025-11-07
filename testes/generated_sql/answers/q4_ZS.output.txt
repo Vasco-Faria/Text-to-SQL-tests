@@ -1,0 +1,4 @@
+ o_orderpriority | count 
+-----------------+-------
+(0 rows)
+

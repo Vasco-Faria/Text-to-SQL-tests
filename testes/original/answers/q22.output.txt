@@ -1,0 +1,4 @@
+ cntrycode | numcust | totacctbal 
+-----------+---------+------------
+(0 rows)
+

@@ -1,0 +1,4 @@
+psql:./q11_ZS.sql:16: ERROR:  column s.suppkey does not exist
+LINE 3: JOIN supplier s ON ps.ps_suppkey = s.suppkey
+                                           ^
+HINT:  Perhaps you meant to reference the column "s.s_suppkey".
