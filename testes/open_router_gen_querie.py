@@ -8,7 +8,7 @@ descriptions_dir = "descriptions"
 outputs_dir = "generated_sql"
 
 # Choose the free model available on OpenRouter
-model_name = "meta-llama/llama-3.3-70b-instruct:free"
+model_name = "google/gemini-2.0-flash-exp:free"
 
 # Put your OpenRouter API key here or as an environment variable
 load_dotenv()
