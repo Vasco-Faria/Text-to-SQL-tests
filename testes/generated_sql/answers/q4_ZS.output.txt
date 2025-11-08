@@ -1,0 +1,4 @@
+psql:./q4_ZS.sql:14: ERROR:  function date(unknown, unknown) does not exist
+LINE 9:   AND o.o_orderdate < DATE('1997-01-01', '+3 months')
+                              ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.

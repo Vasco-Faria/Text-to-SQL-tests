@@ -1,0 +1,3 @@
+psql:./q13_ZS.sql:10: ERROR:  column "customer_id" does not exist
+LINE 4:     SELECT customer_id, COUNT(*) AS ordercount
+                   ^

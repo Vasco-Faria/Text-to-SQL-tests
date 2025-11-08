@@ -1,0 +1,4 @@
+psql:./q2_ZS.sql:53: ERROR:  column p.partkey does not exist
+LINE 12:   ON P.partkey = PS.partkey
+              ^
+HINT:  Perhaps you meant to reference the column "p.p_partkey".

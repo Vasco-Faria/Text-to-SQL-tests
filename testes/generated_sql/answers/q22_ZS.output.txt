@@ -1,0 +1,4 @@
+psql:./q22_ZS.sql:10: ERROR:  function date(unknown, unknown) does not exist
+LINE 8:     AND o_orderdate >= date('now', '-7 years')
+                               ^
+HINT:  No function matches the given name and argument types. You might need to add explicit type casts.

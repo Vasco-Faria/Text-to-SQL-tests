@@ -1,0 +1,4 @@
+ s_nation | c_nation | year | revenue 
+----------+----------+------+---------
+(0 rows)
+

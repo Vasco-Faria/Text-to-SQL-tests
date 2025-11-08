@@ -1,0 +1,6 @@
+       c_name       |         c_address         | c_nationkey |     c_phone     | c_acctbal |                            c_comment                             | lost_revenue 
+--------------------+---------------------------+-------------+-----------------+-----------+------------------------------------------------------------------+--------------
+ Customer#000000003 | MG9kdTD8s7RVoCgugrVQeRmcY |           4 | 11-719-748-3364 |   7498.12 | blithely unusual dependencies. blithely pending requests haggle. |   32010.0000
+ Customer3          | Address 3                 |          18 | 661964676       |   -696.85 | Customer comment 3                                               |   32010.0000
+(2 rows)
+

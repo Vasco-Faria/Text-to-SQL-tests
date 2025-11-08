@@ -1,0 +1,4 @@
+psql:./q18_ZS.sql:18: ERROR:  column c.custkey does not exist
+LINE 11:     orders o ON c.custkey = o.custkey
+                         ^
+HINT:  Perhaps you meant to reference the column "c.c_custkey".
