@@ -67,7 +67,7 @@ QUESTION:
 
 
 # === Process Q1 to Q5 descriptions ===
-for q_num in range(16, 21):  # Q1 até Q5
+for q_num in range(20, 23):  # Q1 até Q5
     query_name = f"q{q_num}"
     description_path = os.path.join(descriptions_dir, f"{query_name}_description.txt")
 
