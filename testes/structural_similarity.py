@@ -3,6 +3,8 @@ import glob
 import sqlglot
 import csv
 from collections import Counter
+from sqlglot.expressions import Expression
+from graphviz import Digraph
 
 
 # Diretórios onde estão as queries
@@ -20,6 +22,28 @@ def parse_query(query_path):
     except Exception:
         return None
 
+
+def ast_to_graphviz(ast: Expression, filename="ast_example"):
+    """Converts a sqlglot AST to a Graphviz image."""
+    dot = Digraph(comment="SQL AST")
+
+    def add_node(node, parent_id=None):
+        node_id = str(id(node))
+        label = type(node).__name__
+        dot.node(node_id, label)
+        if parent_id:
+            dot.edge(parent_id, node_id)
+        for child in node.args.values():
+            if isinstance(child, Expression):
+                add_node(child, node_id)
+            elif isinstance(child, list):
+                for c in child:
+                    if isinstance(c, Expression):
+                        add_node(c, node_id)
+
+    add_node(ast)
+    dot.render(filename, format="png", cleanup=True)
+    print(f"✅ AST image saved as {filename}.png")
 
 def ast_similarity(ast1, ast2):
     """Calcula uma métrica simples de similaridade estrutural."""
@@ -65,6 +89,9 @@ def compare_queries():
 
         ast_orig = parse_query(orig_path)
         ast_gen = parse_query(gen_path)
+        
+        
+        ast_to_graphviz(ast_orig, filename)
 
         sim = ast_similarity(ast_orig, ast_gen)
         results.append((filename, os.path.basename(gen_path), sim))
