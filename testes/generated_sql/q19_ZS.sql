@@ -1,12 +1,35 @@
-SELECT
-    SUM(l.l_extendedprice * (1 - l.l_discount)) AS discounted_revenue
-FROM
-    lineitem l
-JOIN
-    part p ON l.l_partkey = p.p_partkey
-WHERE
-    (p.p_brand = 'Brand#11' AND l.l_quantity BETWEEN 1 AND 4)
-    OR (p.p_brand = 'Brand#25' AND l.l_quantity BETWEEN 10 AND 16)
-    OR (p.p_brand = 'Brand#54' AND l.l_quantity BETWEEN 20 AND 29)
-    AND l.l_shipmode = 'AIR'
-    AND l.l_shipinstruct = 'DELIVER IN PERSON';
+select
+    sum(l_extendedprice * (1 - l_discount)) as revenue
+from
+    lineitem,
+    part
+where
+    (
+        p_partkey = l_partkey
+        and p_brand = 'Brand#11'
+        and p_container in ('SM CASE', 'SM BOX', 'SM PACK', 'SM PKG')
+        and l_quantity >= 4 and l_quantity <= 4 + 10
+        and p_size between 1 and 5
+        and l_shipmode = 'AIR'
+        and l_shipinstruct = 'DELIVER IN PERSON'
+    )
+    or
+    (
+        p_partkey = l_partkey
+        and p_brand = 'Brand#25'
+        and p_container in ('MID BAG', 'MID BOX', 'MID PKG', 'MID CASE')
+        and l_quantity >= 16 and l_quantity <= 16 + 10
+        and p_size between 1 and 10
+        and l_shipmode = 'AIR'
+        and l_shipinstruct = 'DELIVER IN PERSON'
+    )
+    or
+    (
+        p_partkey = l_partkey
+        and p_brand = 'Brand#54'
+        and p_container in ('LG CASE', 'LG BOX', 'LG PACK', 'LG PKG')
+        and l_quantity >= 29 and l_quantity <= 29 + 10
+        and p_size between 1 and 15
+        and l_shipmode = 'AIR'
+        and l_shipinstruct = 'DELIVER IN PERSON'
+    );

@@ -1,48 +1,52 @@
 TPC-H Execution Accuracy Evaluation
 ================================================================================
 
-Execution Accuracy (EX): 18.18%
-Correct: 4/22
+Execution Accuracy (EX): 45.45%
+Correct: 10/22
 
 Breakdown:
-  Correct matches: 4
-  Mismatches: 11
+  Correct matches: 10
+  Mismatches: 4
   Missing outputs: 0
-  Parse errors: 7
+  Parse errors: 8
 
 Detailed Results:
 --------------------------------------------------------------------------------
 
 Query: q1
-Status: MISMATCH
-Match: False
-Reason: Different shapes: (6, 10) vs (6, 9)
+Status: MATCH
+Match: True
+Reason: Match (content-based column mapping)
 Original shape: (6, 10)
-Generated shape: (6, 9)
+Generated shape: (6, 10)
 Original columns: ['l_returnflag', 'l_linestatus', 'sum_qty', 'sum_base_price', 'sum_disc_price', 'sum_charge', 'avg_qty', 'avg_price', 'avg_disc', 'count_order']
-Generated columns: ['l_returnflag', 'l_linestatus', 'sum_qty', 'sum_disc_price', 'sum_charge', 'avg_qty', 'avg_price', 'avg_disc', 'count_order']
+Generated columns: ['l_returnflag', 'l_linestatus', 'sum_qty', 'sum_base_price', 'sum_disc_price', 'sum_charge', 'avg_qty', 'avg_price', 'avg_disc', 'count_order']
 --------------------------------------------------------------------------------
 
 Query: q10
-Status: MISMATCH
-Match: False
-Reason: Different shapes: (20, 8) vs (20, 7)
+Status: MATCH
+Match: True
+Reason: Match (content-based column mapping)
 Original shape: (20, 8)
-Generated shape: (20, 7)
+Generated shape: (20, 8)
 Original columns: ['c_custkey', 'c_name', 'revenue', 'c_acctbal', 'n_name', 'c_address', 'c_phone', 'c_comment']
-Generated columns: ['c_name', 'c_address', 'nation', 'c_phone', 'c_acctbal', 'c_comment', 'revenue_lost']
+Generated columns: ['c_custkey', 'c_name', 'c_acctbal', 'c_phone', 'n_name', 'c_address', 'c_comment', 'total_lost_revenue']
 --------------------------------------------------------------------------------
 
 Query: q11
-Status: PARSE_ERROR_GEN
-Match: False
-Reason: Failed to parse generated output
+Status: MATCH
+Match: True
+Reason: Match (content-based column mapping)
+Original shape: (1021, 2)
+Generated shape: (1021, 2)
+Original columns: ['ps_partkey', 'value']
+Generated columns: ['ps_partkey', 'value']
 --------------------------------------------------------------------------------
 
 Query: q12
-Status: MISMATCH
-Match: False
-Reason: Could not match columns by content
+Status: MATCH
+Match: True
+Reason: Match (content-based column mapping)
 Original shape: (2, 3)
 Generated shape: (2, 3)
 Original columns: ['l_shipmode', 'high_line_count', 'low_line_count']
@@ -50,13 +54,13 @@ Generated columns: ['l_shipmode', 'high_line_count', 'low_line_count']
 --------------------------------------------------------------------------------
 
 Query: q13
-Status: MISMATCH
-Match: False
-Reason: Could not match columns by content
+Status: MATCH
+Match: True
+Reason: Match (content-based column mapping)
 Original shape: (49, 2)
 Generated shape: (49, 2)
 Original columns: ['c_count', 'custdist']
-Generated columns: ['order_count', 'num_customers']
+Generated columns: ['c_count', 'custdist']
 --------------------------------------------------------------------------------
 
 Query: q14
@@ -68,21 +72,21 @@ Reason: Failed to parse original output
 Query: q15
 Status: MISMATCH
 Match: False
-Reason: Different shapes: (1, 5) vs (1, 3)
+Reason: Different shapes: (1, 5) vs (1, 7)
 Original shape: (1, 5)
-Generated shape: (1, 3)
+Generated shape: (1, 7)
 Original columns: ['s_suppkey', 's_name', 's_address', 's_phone', 'total_revenue']
-Generated columns: ['s_suppkey', 's_name', 'revenue']
+Generated columns: ['s_suppkey', 's_name', 's_address', 's_phone', 's_acctbal', 's_comment', 'total_revenue']
 --------------------------------------------------------------------------------
 
 Query: q16
-Status: MISMATCH
-Match: False
-Reason: Different shapes: (18284, 4) vs (637, 4)
+Status: MATCH
+Match: True
+Reason: Match (content-based column mapping)
 Original shape: (18284, 4)
-Generated shape: (637, 4)
+Generated shape: (18284, 4)
 Original columns: ['p_brand', 'p_type', 'p_size', 'supplier_cnt']
-Generated columns: ['p_brand', 'p_type', 'p_size', 'supplier_count']
+Generated columns: ['p_brand', 'p_type', 'p_size', 'supplier_cnt']
 --------------------------------------------------------------------------------
 
 Query: q17
@@ -92,9 +96,13 @@ Reason: Failed to parse original output
 --------------------------------------------------------------------------------
 
 Query: q18
-Status: PARSE_ERROR_GEN
-Match: False
-Reason: Failed to parse generated output
+Status: MATCH
+Match: True
+Reason: Match (content-based column mapping)
+Original shape: (12, 6)
+Generated shape: (12, 6)
+Original columns: ['c_name', 'c_custkey', 'o_orderkey', 'o_orderdate', 'o_totalprice', 'sum']
+Generated columns: ['c_name', 'c_custkey', 'o_orderkey', 'o_orderdate', 'o_totalprice', 'sum']
 --------------------------------------------------------------------------------
 
 Query: q19
@@ -104,23 +112,19 @@ Reason: Failed to parse original output
 --------------------------------------------------------------------------------
 
 Query: q2
-Status: MATCH
-Match: True
-Reason: Match (content-based column mapping)
+Status: MISMATCH
+Match: False
+Reason: Different shapes: (2090, 8) vs (100, 8)
 Original shape: (2090, 8)
-Generated shape: (2090, 8)
+Generated shape: (100, 8)
 Original columns: ['s_acctbal', 's_name', 'n_name', 'p_partkey', 'p_mfgr', 's_address', 's_phone', 's_comment']
 Generated columns: ['s_acctbal', 's_name', 'n_name', 'p_partkey', 'p_mfgr', 's_address', 's_phone', 's_comment']
 --------------------------------------------------------------------------------
 
 Query: q20
-Status: MISMATCH
+Status: PARSE_ERROR_GEN
 Match: False
-Reason: Different shapes: (15, 4) vs (215, 4)
-Original shape: (15, 4)
-Generated shape: (215, 4)
-Original columns: ['s_suppkey', 's_name', 'l_partkey', 'qty_shipped']
-Generated columns: ['s_suppkey', 's_name', 'l_partkey', 'qty_shipped']
+Reason: Failed to parse generated output
 --------------------------------------------------------------------------------
 
 Query: q21
@@ -136,7 +140,7 @@ Reason: Different shapes: (7, 3) vs (1, 2)
 Original shape: (7, 3)
 Generated shape: (1, 2)
 Original columns: ['cntrycode', 'numcust', 'totacctbal']
-Generated columns: ['num_customers', 'total_acctbal']
+Generated columns: ['count', 'sum']
 --------------------------------------------------------------------------------
 
 Query: q3
@@ -160,13 +164,9 @@ Generated columns: ['o_orderpriority', 'order_count']
 --------------------------------------------------------------------------------
 
 Query: q5
-Status: MISMATCH
+Status: PARSE_ERROR_GEN
 Match: False
-Reason: Could not match columns by content
-Original shape: (10, 2)
-Generated shape: (10, 2)
-Original columns: ['n_name', 'revenue']
-Generated columns: ['nation', 'revenue']
+Reason: Failed to parse generated output
 --------------------------------------------------------------------------------
 
 Query: q6
@@ -182,17 +182,13 @@ Reason: Match (content-based column mapping)
 Original shape: (4, 4)
 Generated shape: (4, 4)
 Original columns: ['supp_nation', 'cust_nation', 'l_year', 'revenue']
-Generated columns: ['supplier_nation', 'customer_nation', 'l_year', 'revenue']
+Generated columns: ['supp_nation', 'cust_nation', 'l_year', 'revenue']
 --------------------------------------------------------------------------------
 
 Query: q8
-Status: MISMATCH
+Status: PARSE_ERROR_GEN
 Match: False
-Reason: Could not match columns by content
-Original shape: (2, 2)
-Generated shape: (2, 2)
-Original columns: ['o_year', 'mkt_share']
-Generated columns: ['l_year', 'market_share']
+Reason: Failed to parse generated output
 --------------------------------------------------------------------------------
 
 Query: q9
@@ -202,5 +198,5 @@ Reason: Different shapes: (452, 3) vs (451, 3)
 Original shape: (452, 3)
 Generated shape: (451, 3)
 Original columns: ['nation', 'o_year', 'sum_profit']
-Generated columns: ['nation', 'l_year', 'profit']
+Generated columns: ['n_name', 'l_year', 'profit']
 --------------------------------------------------------------------------------

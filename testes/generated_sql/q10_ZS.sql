@@ -1,30 +1,32 @@
-SELECT
-    c.c_name,
-    c.c_address,
-    n.n_name AS nation,
-    c.c_phone,
-    c.c_acctbal,
-    c.c_comment,
-    SUM(l.l_extendedprice * (1 - l.l_discount)) AS revenue_lost
-FROM
-    customer c
-JOIN
-    orders o ON c.c_custkey = o.o_custkey
-JOIN
-    lineitem l ON o.o_orderkey = l.l_orderkey
-JOIN
-    nation n ON c.c_nationkey = n.n_nationkey
-WHERE
-    o.o_orderdate >= DATE '1993-08-01'
-    AND o.o_orderdate < DATE '1993-08-01' + INTERVAL '3 months'
-    AND l.l_receiptdate > l.l_commitdate
-GROUP BY
-    c.c_name,
-    c.c_address,
-    n.n_name,
-    c.c_phone,
-    c.c_acctbal,
-    c.c_comment
-ORDER BY
-    revenue_lost DESC
-LIMIT 20;
+select
+    c_custkey,
+    c_name,
+    c_acctbal,
+    c_phone,
+    n_name,
+    c_address,
+    c_comment,
+    sum(l_extendedprice * (1 - l_discount)) as total_lost_revenue
+from
+    customer,
+    orders,
+    lineitem,
+    nation
+where
+    c_custkey = o_custkey
+    and o_orderkey = l_orderkey
+    and l_returnflag = 'R'
+    and c_nationkey = n_nationkey
+    and o_orderdate >= date '1993-08-01'
+    and o_orderdate < date '1993-08-01' + interval '3 months'
+group by
+    c_custkey,
+    c_name,
+    c_acctbal,
+    c_phone,
+    n_name,
+    c_address,
+    c_comment
+order by
+    total_lost_revenue desc
+limit 20;

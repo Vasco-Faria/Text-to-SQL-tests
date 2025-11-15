@@ -1,22 +1,25 @@
-SELECT
-    n.n_name AS nation,
-    EXTRACT(YEAR FROM l.l_shipdate) AS l_year,
-    SUM((l.l_extendedprice * (1 - l.l_discount)) - (ps.ps_supplycost * l.l_quantity)) AS profit
-FROM
-    lineitem l
-JOIN
-    supplier s ON l.l_suppkey = s.s_suppkey
-JOIN
-    partsupp ps ON l.l_partkey = ps.ps_partkey AND l.l_suppkey = ps.ps_suppkey
-JOIN
-    part p ON l.l_partkey = p.p_partkey
-JOIN
-    nation n ON s.s_nationkey = n.n_nationkey
-WHERE
-    p.p_name LIKE '%red%'
-GROUP BY
-    n.n_name,
+select
+    n_name,
+    extract(year from l_shipdate) as l_year,
+    sum(l_extendedprice * (1 - l_discount) - ps_supplycost * l_quantity) as profit
+from
+    part,
+    supplier,
+    lineitem,
+    partsupp,
+    orders,
+    nation
+where
+    s_suppkey = l_suppkey
+    and ps_suppkey = l_suppkey
+    and ps_partkey = l_partkey
+    and p_partkey = l_partkey
+    and o_orderkey = l_orderkey
+    and s_nationkey = n_nationkey
+    and p_name like '%red%'
+group by
+    n_name,
     l_year
-ORDER BY
-    nation ASC,
-    l_year DESC;
+order by
+    n_name,
+    l_year desc;

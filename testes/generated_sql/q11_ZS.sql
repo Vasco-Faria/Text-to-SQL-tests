@@ -1,31 +1,28 @@
-WITH nation_stock AS (
-    SELECT
-        ps.ps_partkey,
-        SUM(ps.ps_supplycost * ps.ps_availqty) AS value
-    FROM
-        partsupp ps
-    JOIN
-        supplier s ON ps.ps_suppkey = s.s_suppkey
-    JOIN
-        nation n ON s.s_nationkey = n.n_nationkey
-    WHERE
-        n.n_name = 'UNITED STATES'
-    GROUP BY
-        ps.ps_partkey
-),
-total_value AS (
-    SELECT SUM(value) AS total FROM nation_stock
-)
-SELECT
-    ps.partkey,
-    ns.value
-FROM
-    nation_stock ns
-JOIN
-    partsupp ps ON ns.ps_partkey = ps.ps_partkey
-CROSS JOIN
-    total_value tv
-WHERE
-    ns.value > tv.total * 0.0001000000
-ORDER BY
-    ns.value DESC;
+select
+    ps_partkey,
+    sum(ps_supplycost * ps_availqty) as value
+from
+    partsupp,
+    supplier,
+    nation
+where
+    ps_suppkey = s_suppkey
+    and s_nationkey = n_nationkey
+    and n_name = 'UNITED STATES'
+group by
+    ps_partkey
+having
+    sum(ps_supplycost * ps_availqty) > (
+        select
+            sum(ps_supplycost * ps_availqty) * 0.0001000000
+        from
+            partsupp,
+            supplier,
+            nation
+        where
+            ps_suppkey = s_suppkey
+            and s_nationkey = n_nationkey
+            and n_name = 'UNITED STATES'
+    )
+order by
+    value desc;

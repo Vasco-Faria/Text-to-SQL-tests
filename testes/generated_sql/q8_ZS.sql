@@ -1,24 +1,29 @@
-SELECT
-    EXTRACT(YEAR FROM l.l_shipdate) AS l_year,
-    SUM(CASE WHEN s_nation.n_name = 'KENYA' THEN l.l_extendedprice * (1 - l.l_discount) ELSE 0 END) /
-    SUM(l.l_extendedprice * (1 - l.l_discount)) AS market_share
-FROM
-    lineitem l
-JOIN
-    supplier s ON l.l_suppkey = s.s_suppkey
-JOIN
-    nation s_nation ON s.s_nationkey = s_nation.n_nationkey
-JOIN
-    region r ON s_nation.n_regionkey = r.r_regionkey
-JOIN
-    part p ON l.l_partkey = p.p_partkey
-WHERE
-    r.r_name = 'AFRICA'
-    AND p.p_type = 'ECONOMY PLATED BRASS'
-    AND l.l_shipdate >= DATE '1995-01-01'
-    AND l.l_shipdate < DATE '1997-01-01'
-GROUP BY
-    l_year
-ORDER BY
-    l_year;
-
+select
+    sum(case
+        when n_name = 'KENYA'
+        then l_extendedprice * (1 - l_discount)
+        else 0
+    end) / sum(l_extendedprice * (1 - l_discount)) as mkt_share
+from
+    part,
+    supplier,
+    lineitem,
+    orders,
+    customer,
+    nation n1,
+    region
+where
+    p_partkey = l_partkey
+    and s_suppkey = l_suppkey
+    and l_orderkey = o_orderkey
+    and o_custkey = c_custkey
+    and s_nationkey = n1.n_nationkey
+    and n1.n_regionkey = r_regionkey
+    and r_name = 'AFRICA'
+    and o_orderdate >= date '1995-01-01'
+    and o_orderdate < date '1996-12-31' + interval '1 day'
+    and p_type = 'ECONOMY PLATED BRASS'
+group by
+    extract(year from o_orderdate)
+order by
+    extract(year from o_orderdate);

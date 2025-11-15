@@ -1,25 +1,25 @@
 Original Query,Generated Query,Structural Similarity
-q1.sql,q1_ZS.sql,0.943
-q10.sql,q10_ZS.sql,0.701
-q11.sql,q11_ZS.sql,0.583
-q12.sql,q12_ZS.sql,0.752
-q13.sql,q13_ZS.sql,0.742
-q14.sql,q14_ZS.sql,0.811
-q15.sql,q15_ZS.sql,0.37
-q16.sql,q16_ZS.sql,0.703
-q17.sql,q17_ZS.sql,0.533
-q18.sql,q18_ZS.sql,0.569
-q19.sql,q19_ZS.sql,0.497
+q1.sql,q1_ZS.sql,1.0
+q10.sql,q10_ZS.sql,1.0
+q11.sql,q11_ZS.sql,1.0
+q12.sql,q12_ZS.sql,1.0
+q13.sql,q13_ZS.sql,0.96
+q14.sql,q14_ZS.sql,1.0
+q15.sql,q15_ZS.sql,0.533
+q16.sql,q16_ZS.sql,1.0
+q17.sql,q17_ZS.sql,0.794
+q18.sql,q18_ZS.sql,1.0
+q19.sql,q19_ZS.sql,0.946
 q2.sql,q2_ZS.sql,0.0
-q20.sql,q20_ZS.sql,0.475
-q21.sql,q21_ZS.sql,0.618
-q22.sql,q22_ZS.sql,0.628
-q3.sql,q3_ZS.sql,0.828
-q4.sql,q4_ZS.sql,0.667
-q5.sql,q5_ZS.sql,0.65
+q20.sql,q20_ZS.sql,0.776
+q21.sql,q21_ZS.sql,0.577
+q22.sql,q22_ZS.sql,0.688
+q3.sql,q3_ZS.sql,1.0
+q4.sql,q4_ZS.sql,0.828
+q5.sql,q5_ZS.sql,0.375
 q6.sql,q6_ZS.sql,1.0
-q7.sql,q7_ZS.sql,0.827
+q7.sql,q7_ZS.sql,0.914
 q8.sql,q8_ZS.sql,0.745
-q9.sql,q9_ZS.sql,0.714
+q9.sql,q9_ZS.sql,0.866
 
-Average Similarity,,0.653
+Average Similarity,,0.818

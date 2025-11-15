@@ -1,29 +1,33 @@
-WITH order_totals AS (
-    SELECT
-        o.o_orderkey,
-        o.o_custkey,
-        o.o_orderdate,
-        SUM(l.l_quantity) AS total_quantity,
-        SUM(l.l_extendedprice) AS total_price
-    FROM
-        orders o
-    JOIN
-        lineitem l ON o.o_orderkey = l.l_orderkey
-    GROUP BY
-        o.o_orderkey,
-        o.o_custkey,
-        o.o_orderdate
-    HAVING
-        SUM(l.l_quantity) > 14
-)
-SELECT
-    c.c_name,
-    c.c_custkey,
-    ot.o_orderkey,
-    ot.o_orderdate,
-    ot.total_price,
-    ot.total_quantity
-FROM
-    order_totals ot
-JOIN
-    customer c ON ot.o_custkey = c.c_
+select
+    c_name,
+    c_custkey,
+    o_orderkey,
+    o_orderdate,
+    o_totalprice,
+    sum(l_quantity)
+from
+    customer,
+    orders,
+    lineitem
+where
+    o_orderkey in (
+        select
+            l_orderkey
+        from
+            lineitem
+        group by
+            l_orderkey having
+                sum(l_quantity) > 314
+    )
+    and c_custkey = o_custkey
+    and o_orderkey = l_orderkey
+group by
+    c_name,
+    c_custkey,
+    o_orderkey,
+    o_orderdate,
+    o_totalprice
+order by
+    o_totalprice desc,
+    o_orderdate
+limit 100;
