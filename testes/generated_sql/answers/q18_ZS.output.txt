@@ -1,0 +1,3 @@
+psql:./q18_ZS.sql:29: ERROR:  column c.c_ does not exist
+LINE 29:     customer c ON ot.o_custkey = c.c_
+                                          ^

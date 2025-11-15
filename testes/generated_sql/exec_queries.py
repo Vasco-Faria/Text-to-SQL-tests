@@ -2,7 +2,7 @@ import os
 import subprocess
 import re
 
-DB_NAME = "tpch"
+DB_NAME = "postgres"
 QUERY_DIR = "./"
 OUTPUT_DIR = "./answers"
 
@@ -13,7 +13,7 @@ def natural_sort_key(s):
             for text in re.split(r'(\d+)', s)]
 
 for filename in sorted(os.listdir(QUERY_DIR), key=natural_sort_key):
-    if filename.endswith("_ZS.sql"):
+    if filename.endswith("q7_ZS.sql"):
         base = filename[:-4]  # remove ".sql"
         input_path = os.path.join(QUERY_DIR, filename)
         output_path = os.path.join(OUTPUT_DIR, f"{base}.output.txt")

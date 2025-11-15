@@ -1,0 +1,4 @@
+ s_suppkey | s_name | nation 
+-----------+--------+--------
+(0 rows)
+

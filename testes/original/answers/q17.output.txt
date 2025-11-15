@@ -1,2 +1,5 @@
-Cancel request sent
-psql:queries/q17.sql:20: ERROR:  canceling statement due to user request
+     avg_yearly      
+---------------------
+ 347038.835714285714
+(1 row)
+

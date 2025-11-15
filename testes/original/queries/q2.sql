@@ -1,6 +1,3 @@
--- using 1760957656 as a seed to the RNG
-
-
 select
 	s_acctbal,
 	s_name,

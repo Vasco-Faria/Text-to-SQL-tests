@@ -2,7 +2,7 @@ import os
 import subprocess
 import re
 
-DB_NAME = "tpch"
+DB_NAME = "postgres"
 QUERY_DIR = "./queries"
 OUTPUT_DIR = "./answers"
 
